@@ -1,0 +1,7 @@
+spring:
+  cloud:
+    config:
+      uri: http://34.80.214.44:8888
+      name: jiang-service-sso
+      label: master
+      profile: dev

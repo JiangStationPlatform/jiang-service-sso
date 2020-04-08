@@ -1,0 +1,62 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Jzang - 登录</title>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+    <link rel="stylesheet" th:href="@{{adminlte}/css/bootstrap.min.css(adminlte=${adminlte})}"/>
+    <link rel="stylesheet" th:href="@{{adminlte}/css/font-awesome.min.css(adminlte=${adminlte})}"/>
+    <link rel="stylesheet" th:href="@{{adminlte}/css/ionicons.min.css(adminlte=${adminlte})}"/>
+    <link rel="stylesheet" th:href="@{{adminlte}/css/AdminLTE.css(adminlte=${adminlte})}">
+</head>
+
+<body class="bg-black">
+
+<div class="form-box" id="login-box">
+    <div class="header">Jzang</div>
+
+    <th:block th:if="${tbSysUser != null}">
+        <p class="body bg-gray">欢迎 <span th:text="${tbSysUser.userName}"></span>回来！</p>
+    </th:block>
+
+    <th:block th:if="${tbSysUser == null}">
+        <p class="body bg-gray" style="margin: 0">欢迎管理员登录</p>
+        <form action="/login" method="post">
+            <input type="hidden" name="url" th:value="${url}">
+            <div class="body bg-gray">
+                <div class="alert alert-danger alert-dismissable" th:if="${message != null}">
+                    <span th:text="${message}"></span>
+                </div>
+                <div class="form-group has-feedback">
+                    <input name="loginCode" type="email" class="form-control" placeholder="邮箱">
+                    <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                </div>
+
+                <div class="form-group has-feedback">
+                    <input name="password" type="password" class="form-control" placeholder="密码">
+                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                </div>
+
+               <!-- <div class="form-group">
+                    <input name="isRemember" type="checkbox"> 记住我
+                </div>-->
+            </div>
+            <div class="footer">
+                <button type="submit" class="btn btn-primary btn-block">登录</button>
+
+<!--                <p><a href="#">忘记密码？</a></p>-->
+
+            </div>
+        </form>
+
+
+    </th:block>
+</div>
+
+<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.js"></script>
+<script th:href="@{{adminlte}/js/bootstrap.min.js(adminlte=${adminlte})}"></script>
+<script th:href="@{{adminlte}/js/AdminLTE/app.js(adminlte=${adminlte})}"></script>
+
+</body>
+</html>
